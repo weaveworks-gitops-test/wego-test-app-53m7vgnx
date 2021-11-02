@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-yti3fc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-yti3fc
+  namespace: my-nginx-yti3fc
+  labels:
+    name: nginx-yti3fc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-yti3fc
+  template:
+    metadata:
+      namespace: my-nginx-yti3fc
+      labels:
+        name: nginx-yti3fc
+    spec:
+      containers:
+      - name: nginx-yti3fc
+        image: nginx
+        ports:
+        - containerPort: 80
+
